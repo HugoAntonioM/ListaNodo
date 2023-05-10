@@ -1,0 +1,50 @@
+import java.util.*;
+class main{
+    public static void main (String[]args){
+        Lista list = new Lista();
+        String dato ="";
+        Scanner sc = new Scanner (System.in);
+        while (!dato.equalsIgnoreCase("Fin")){
+            dato = sc.nextLine();
+            if(!dato.equalsIgnoreCase("Fin"))
+                list.insertar(dato);
+        }
+        list.visualizar();
+    }
+}
+
+public class Lista {
+    Main primero;
+    public Lista(){
+        primero = null;
+    }
+    public void insertar (String dato){
+        Main temp = new Main(dato);
+        temp.next = primero;
+        primero = temp;
+    }
+    public void visualizar (){
+        Main n;
+        n = primero;
+        while(n!=null) {
+            System.out.println(n.info);
+        }
+    }
+}
+
+
+public class Main {
+    String info;
+    Main next;
+    public Main(String dato){
+        next = null;
+    }
+    public Main(String info){
+        this.info = info;
+        next = null;
+    }
+    public Main(String info, Main next){
+        this.info = info;
+        this.next = next;
+    }
+}
